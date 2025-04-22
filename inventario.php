@@ -19,24 +19,38 @@
     $inventario = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<h2>Inventario</h2>
-<table class="table">
-    <thead class="table-info">
-        <th>Código</th>
-        <th>Elemento</th>
-        <th>Categoría</th>
-        <th>Centro de Trabajo</th>
-        <th>Cantidad</th>
-        <th>Estado</th>
-    </thead>
-    <?php foreach ($inventario as $i): ?>
-    <tr>
-        <td><?= $i['codigo'] ?></td>
-        <td><?= $i['elemento'] ?></td>
-        <td><?= $i['categoria'] ?></td>
-        <td><?= $i['centro'] ?></td>
-        <td><?= $i['cantidad'] ?></td>
-        <td><?= $i['estado_actual'] ?></td>
-    </tr>
-    <?php endforeach; ?>
-</table>
+<div class="mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-info text-white">
+            <h4 class="mb-0">Inventario de Herramientas y Equipos</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-info">
+                        <tr>
+                            <th>Código</th>
+                            <th>Elemento</th>
+                            <th>Categoría</th>
+                            <th>Centro de Trabajo</th>
+                            <th>Cantidad</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($inventario as $i): ?>
+                        <tr>
+                            <td><?= $i['codigo'] ?></td>
+                            <td><?= $i['elemento'] ?></td>
+                            <td><?= $i['categoria'] ?></td>
+                            <td><?= $i['centro'] ?></td>
+                            <td class="text-center"><?= $i['cantidad'] ?></td>
+                            <td><?= $i['estado_actual'] ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
