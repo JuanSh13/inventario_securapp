@@ -1,11 +1,12 @@
 <?php
-    require('conexion.php');
+    // require('../db/conexion.php');
 
     // Consulta de inventario
     $sql = "
         SELECT 
             c.nombre AS centro, 
             e.nombre AS elemento, 
+            e.id_elemento,
             i.cantidad, 
             i.estado_actual, 
             e.codigo, 
@@ -17,6 +18,8 @@
 
     $stmt = $pdo->query($sql);
     $inventario = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // print_r($inventario[0]);
 ?>
 
 <div class="mt-5">
@@ -35,6 +38,7 @@
                             <th>Centro de Trabajo</th>
                             <th>Cantidad</th>
                             <th>Estado</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,6 +50,11 @@
                             <td><?= $i['centro'] ?></td>
                             <td class="text-center"><?= $i['cantidad'] ?></td>
                             <td><?= $i['estado_actual'] ?></td>
+                            <td>
+                                <a class="text-danger" href="inventario_principal/borrar_elemento.php?id=<?= $i['id_elemento']; ?>">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </a>
+                            </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

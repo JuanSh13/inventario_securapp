@@ -1,31 +1,31 @@
 <?php
-require 'conexion.php';
+    require('../db/conexion.php');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $codigo = $_POST['codigo'];
-    $nombre = $_POST['nombre'];
-    $descripcion = $_POST['descripcion'];
-    $categoria = $_POST['categoria'];
-    $marca = $_POST['marca'];
-    $modelo = $_POST['modelo'];
-    $fecha_compra = $_POST['fecha_compra'];
-    $valor = $_POST['valor'];
-    $estado = $_POST['estado'];
-    $vida_util = $_POST['vida_util'];
-    $consumible = isset($_POST['consumible']) ? 1 : 0;
-    $stock_minimo = $_POST['stock_minimo'] ?: null;
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $codigo = $_POST['codigo'];
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        $categoria = $_POST['categoria'];
+        $marca = $_POST['marca'];
+        $modelo = $_POST['modelo'];
+        $fecha_compra = $_POST['fecha_compra'];
+        $valor = $_POST['valor'];
+        $estado = $_POST['estado'];
+        $vida_util = $_POST['vida_util'];
+        $consumible = isset($_POST['consumible']) ? 1 : 0;
+        $stock_minimo = $_POST['stock_minimo'] ?: null;
 
-    $stmt = $pdo->prepare("INSERT INTO elemento 
-        (codigo, nombre, descripcion, categoria, marca, modelo, fecha_compra, valor, estado, vida_util, consumible, stock_minimo)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO elemento 
+            (codigo, nombre, descripcion, categoria, marca, modelo, fecha_compra, valor, estado, vida_util, consumible, stock_minimo)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    $stmt->execute([
-        $codigo, $nombre, $descripcion, $categoria, $marca, $modelo,
-        $fecha_compra, $valor, $estado, $vida_util, $consumible, $stock_minimo
-    ]);
+        $stmt->execute([
+            $codigo, $nombre, $descripcion, $categoria, $marca, $modelo,
+            $fecha_compra, $valor, $estado, $vida_util, $consumible, $stock_minimo
+        ]);
 
-    // echo "<div class='alert alert-success text-black text-center'>✅ Centro registrado exitosamente</div>";
-}
+        // echo "<div class='alert alert-success text-black text-center'>✅ Centro registrado exitosamente</div>";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -42,27 +42,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="bg-light">
-    <!-- Navigation -->
+    <!-- Navegación -->
     <nav class="navbar navbar-expand-lg shadow-sm">
         <div class="container-fluid mx-5">
             <ul class="navbar-nav">
+                <!-- Home -->
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">
+                    <a class="nav-link" href="../index.php">
                         <i class="fa-solid fa-house"></i>
                     </a>
                 </li>
+                <!-- Crear Centro -->
                 <li class="nav-item">
-                    <a class="nav-link" href="crear_sede.php">
+                    <a class="nav-link" href="../centros_trabajo/crear_centro.php">
                         <i class="fa-solid fa-warehouse"></i>
                     </a>
                 </li>
+                <!-- Crear Elemento de Inventario -->
                 <li class="nav-item">
-                    <a class="nav-link" href="crear_elemento.php">
+                    <a class="nav-link" href="../inventario_principal/crear_elemento.php">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
                     </a>
                 </li>
+                <!-- Crear Usuario -->
                 <li class="nav-item">
-                    <a class="nav-link" href="crear_usuario.php">
+                    <a class="nav-link" href="../usuarios/crear_usuario.php">
                         <i class="fa-solid fa-users"></i>
                     </a>
                 </li>

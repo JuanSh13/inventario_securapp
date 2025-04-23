@@ -1,5 +1,5 @@
 <?php
-    require 'conexion.php';
+    require('../db/conexion.php');
 
     // Guardar datos si se envió el formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -35,27 +35,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="bg-light">
-    <!-- Navigation -->
+    <!-- Navegación -->
     <nav class="navbar navbar-expand-lg shadow-sm">
         <div class="container-fluid mx-5">
             <ul class="navbar-nav">
+                <!-- Home -->
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">
+                    <a class="nav-link" href="../index.php">
                         <i class="fa-solid fa-house"></i>
                     </a>
                 </li>
+                <!-- Crear Centro -->
                 <li class="nav-item">
-                    <a class="nav-link" href="crear_sede.php">
+                    <a class="nav-link" href="../centros_trabajo/crear_centro.php">
                         <i class="fa-solid fa-warehouse"></i>
                     </a>
                 </li>
+                <!-- Crear Elemento de Inventario -->
                 <li class="nav-item">
-                    <a class="nav-link" href="crear_elemento.php">
+                    <a class="nav-link" href="../inventario_principal/crear_elemento.php">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
                     </a>
                 </li>
+                <!-- Crear Usuario -->
                 <li class="nav-item">
-                    <a class="nav-link" href="crear_usuario.php">
+                    <a class="nav-link" href="../usuarios/crear_usuario.php">
                         <i class="fa-solid fa-users"></i>
                     </a>
                 </li>
@@ -64,6 +68,7 @@
         </div>
     </nav>
 
+    <!-- Formulario -->
     <div class="container mt-5">
         <div class="card shadow-sm">
             <div class="card-header bg-danger text-white">

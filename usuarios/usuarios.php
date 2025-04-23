@@ -1,23 +1,23 @@
 <?php
-require('conexion.php');
+    // require('../db/conexion.php');
 
-$sql = "
-    SELECT 
-        u.id_usuario, 
-        u.nombres, 
-        u.apellidos, 
-        u.tipo_documento, 
-        u.numero_documento, 
-        u.cargo, 
-        u.telefono, 
-        u.email, 
-        c.nombre AS centro
-    FROM usuario u
-    JOIN centro_trabajo c ON u.id_centro = c.id_centro
-";
+    $sql = "
+        SELECT 
+            u.id_usuario, 
+            u.nombres, 
+            u.apellidos, 
+            u.tipo_documento, 
+            u.numero_documento, 
+            u.cargo, 
+            u.telefono, 
+            u.email, 
+            c.nombre AS centro
+        FROM usuario u
+        JOIN centro_trabajo c ON u.id_centro = c.id_centro
+    ";
 
-$stmt = $pdo->query($sql);
-$usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $pdo->query($sql);
+    $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="mt-5">
@@ -39,6 +39,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <th>Teléfono</th>
                             <th>Email</th>
                             <th>Centro</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,6 +54,11 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td><?= $u['telefono'] ?></td>
                             <td><?= $u['email'] ?></td>
                             <td><?= $u['centro'] ?></td>
+                            <td>
+                                <a class="text-danger" href="id=<?= $u['id_usuario'] ?>">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </a>
+                            </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

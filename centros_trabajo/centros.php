@@ -1,7 +1,6 @@
 <?php
     // use function Symfony\Component\DependencyInjection\Loader\Configurator\ref;
-
-    require('conexion.php');
+    // require('../db/conexion.php');
 
     $sql = "
         SELECT 
@@ -40,19 +39,28 @@
                             <th>Email</th>
                             <th>Presupuesto</th>
                             <th>Personal</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($centros as $c): ?>
                         <tr>
-                            <td class="text-center"><?= $c['id_centro'] ?></td>
+                            <td><?= $c['id_centro'] ?></td>
                             <td><?= $c['nombre'] ?></td>
                             <td><?= $c['ubicacion'] ?></td>
                             <td><?= $c['responsable'] ?? '<em>Sin asignar</em>' ?></td>
                             <td><?= $c['telefono'] ?></td>
                             <td><?= $c['email'] ?></td>
                             <td>$<?= number_format($c['presupuesto_mensual'], 0, ',', '.') ?></td>
-                            <td class="text-center"><?= $c['cantidad_personal'] ?></td>
+                            <td><?= $c['cantidad_personal'] ?></td>
+                            <td>
+                                <div data-bs-toggle="modal" data-bs-target="#myModal" >
+                                    <a href="centros_trabajo/borrar_centro.php?id=<?= $c['id_centro'] ?>" class="text-danger">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </a>
+                                </div>
+                                <!-- <a href="#" class="text-danger" id="deleteLink" data-id="<?= $c['id_centro'] ?>"><i class="fa-solid fa-xmark"></i></a> -->
+                            </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

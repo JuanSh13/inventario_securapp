@@ -1,28 +1,28 @@
 <?php
-require 'conexion.php';
+    require('../db/conexion.php');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id_centro = $_POST['id_centro'];
-    $nombres = $_POST['nombres'];
-    $apellidos = $_POST['apellidos'];
-    $tipo_documento = $_POST['tipo_documento'];
-    $numero_documento = $_POST['numero_documento'];
-    $cargo = $_POST['cargo'];
-    $telefono = $_POST['telefono'];
-    $email = $_POST['email'];
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $id_centro = $_POST['id_centro'];
+        $nombres = $_POST['nombres'];
+        $apellidos = $_POST['apellidos'];
+        $tipo_documento = $_POST['tipo_documento'];
+        $numero_documento = $_POST['numero_documento'];
+        $cargo = $_POST['cargo'];
+        $telefono = $_POST['telefono'];
+        $email = $_POST['email'];
 
-    $stmt = $pdo->prepare("INSERT INTO usuario 
-        (id_centro, nombres, apellidos, tipo_documento, numero_documento, cargo, telefono, email)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO usuario 
+            (id_centro, nombres, apellidos, tipo_documento, numero_documento, cargo, telefono, email)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
-    $stmt->execute([$id_centro, $nombres, $apellidos, $tipo_documento, $numero_documento, $cargo, $telefono, $email]);
+        $stmt->execute([$id_centro, $nombres, $apellidos, $tipo_documento, $numero_documento, $cargo, $telefono, $email]);
 
-    // echo "<div class='alert alert-success text-center'>✅ Usuario registrado exitosamente</div>";
-    header("Location: index.php");
-}
+        // echo "<div class='alert alert-success text-center'>✅ Usuario registrado exitosamente</div>";
+        header("Location: index.php");
+    }
 
-// Obtener los centros disponibles
-$centros = $pdo->query("SELECT id_centro, nombre FROM centro_trabajo")->fetchAll();
+    // Obtener los centros disponibles
+    $centros = $pdo->query("SELECT id_centro, nombre FROM centro_trabajo")->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -39,28 +39,31 @@ $centros = $pdo->query("SELECT id_centro, nombre FROM centro_trabajo")->fetchAll
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="bg-light">
-
-    <!-- Navigation -->
+    <!-- Navegación -->
     <nav class="navbar navbar-expand-lg shadow-sm">
         <div class="container-fluid mx-5">
             <ul class="navbar-nav">
+                <!-- Home -->
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">
+                    <a class="nav-link" href="../index.php">
                         <i class="fa-solid fa-house"></i>
                     </a>
                 </li>
+                <!-- Crear Centro -->
                 <li class="nav-item">
-                    <a class="nav-link" href="crear_sede.php">
+                    <a class="nav-link" href="../centros_trabajo/crear_centro.php">
                         <i class="fa-solid fa-warehouse"></i>
                     </a>
                 </li>
+                <!-- Crear Elemento de Inventario -->
                 <li class="nav-item">
-                    <a class="nav-link" href="crear_elemento.php">
+                    <a class="nav-link" href="../inventario_principal/crear_elemento.php">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
                     </a>
                 </li>
+                <!-- Crear Usuario -->
                 <li class="nav-item">
-                    <a class="nav-link" href="crear_usuario.php">
+                    <a class="nav-link" href="../usuarios/crear_usuario.php">
                         <i class="fa-solid fa-users"></i>
                     </a>
                 </li>
@@ -69,6 +72,7 @@ $centros = $pdo->query("SELECT id_centro, nombre FROM centro_trabajo")->fetchAll
         </div>
     </nav>
 
+    <!-- Formulario -->
     <div class="container mt-5">
         <div class="card shadow-sm">
             <div class="card-header bg-warning text-white">
