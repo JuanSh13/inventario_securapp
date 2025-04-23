@@ -7,6 +7,7 @@
             c.nombre AS centro, 
             e.nombre AS elemento, 
             e.id_elemento,
+            i.id_inventario,
             i.cantidad, 
             i.estado_actual, 
             e.codigo, 
@@ -51,7 +52,7 @@
                             <td class="text-center"><?= $i['cantidad'] ?></td>
                             <td><?= $i['estado_actual'] ?></td>
                             <td>
-                                <a class="text-danger" href="inventario_principal/borrar_elemento.php?id=<?= $i['id_elemento']; ?>">
+                                <a class="text-danger" href="inventario_principal/borrar_elemento.php?id_elemento=<?= $i['id_elemento']; ?>&id_inventario=<?= $i['id_inventario']; ?>">
                                     <i class="fa-solid fa-xmark"></i>
                                 </a>
                             </td>
