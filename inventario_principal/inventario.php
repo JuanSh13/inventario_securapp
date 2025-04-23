@@ -23,8 +23,8 @@
     // print_r($inventario[0]);
 ?>
 
-<div class="mt-5">
-    <div class="card shadow-sm">
+<section>
+    <article class="card shadow-sm">
         <div class="card-header bg-info text-white">
             <h4 class="mb-0">Inventario de Herramientas y Equipos</h4>
         </div>
@@ -62,5 +62,5 @@
                 </table>
             </div>
         </div>
-    </div>
-</div>
+    </article>
+</section>

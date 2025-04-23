@@ -47,24 +47,28 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../index.php">
                         <i class="fa-solid fa-house"></i>
+                        Home
                     </a>
                 </li>
                 <!-- Crear Centro -->
                 <li class="nav-item">
                     <a class="nav-link" href="../centros_trabajo/crear_centro.php">
                         <i class="fa-solid fa-warehouse"></i>
+                        Crear Centro
                     </a>
                 </li>
                 <!-- Crear Elemento de Inventario -->
                 <li class="nav-item">
                     <a class="nav-link" href="../inventario_principal/crear_elemento.php">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
+                        Crear Elemento
                     </a>
                 </li>
                 <!-- Crear Usuario -->
                 <li class="nav-item">
                     <a class="nav-link" href="../usuarios/crear_usuario.php">
                         <i class="fa-solid fa-users"></i>
+                        Crear Usuario
                     </a>
                 </li>
             </ul>
@@ -72,72 +76,81 @@
         </div>
     </nav>
 
-    <!-- Formulario -->
-    <div class="container mt-5">
-        <div class="card shadow-sm">
-            <div class="card-header bg-warning text-white">
-                <h4 class="mb-0">Registrar Nuevo Usuario</h4>
-            </div>
-            <div class="card-body">
-                <form method="post">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Nombres</label>
-                            <input type="text" name="nombres" class="form-control" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Apellidos</label>
-                            <input type="text" name="apellidos" class="form-control" required>
-                        </div>
+    <!-- Main -->
+    <main>
+        <div class="row m-5">
+            <!-- Formulario -->
+            <section class="col-4 p-0">
+                <article class="card shadow-sm">
+                    <div class="card-header bg-warning text-white">
+                        <h4 class="mb-0">Registrar Nuevo Usuario</h4>
                     </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Nombres</label>
+                                    <input type="text" name="nombres" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Apellidos</label>
+                                    <input type="text" name="apellidos" class="form-control" required>
+                                </div>
+                            </div>
 
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Tipo de Documento</label>
-                            <select name="tipo_documento" class="form-select" required>
-                                <option value="">Seleccione...</option>
-                                <option value="CC">Cédula de Ciudadanía</option>
-                                <option value="CE">Cédula de Extranjería</option>
-                                <option value="TI">Tarjeta de Identidad</option>
-                                <option value="Pasaporte">Pasaporte</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Número de Documento</label>
-                            <input type="text" name="numero_documento" class="form-control" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Cargo</label>
-                            <input type="text" name="cargo" class="form-control" required>
-                        </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Tipo de Documento</label>
+                                    <select name="tipo_documento" class="form-select" required>
+                                        <option value="">Seleccione...</option>
+                                        <option value="CC">Cédula de Ciudadanía</option>
+                                        <option value="CE">Cédula de Extranjería</option>
+                                        <option value="TI">Tarjeta de Identidad</option>
+                                        <option value="Pasaporte">Pasaporte</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Número de Documento</label>
+                                    <input type="text" name="numero_documento" class="form-control" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Cargo</label>
+                                    <input type="text" name="cargo" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Teléfono</label>
+                                    <input type="text" name="telefono" class="form-control">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" name="email" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Centro de Trabajo</label>
+                                <select name="id_centro" class="form-select" required>
+                                    <option value="">Seleccione un centro...</option>
+                                    <?php foreach ($centros as $c): ?>
+                                        <option value="<?= $c['id_centro'] ?>"><?= $c['nombre'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-warning w-100">Registrar Usuario</button>
+                        </form>
                     </div>
+                </article>
+            </section>
 
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Teléfono</label>
-                            <input type="text" name="telefono" class="form-control">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Centro de Trabajo</label>
-                        <select name="id_centro" class="form-select" required>
-                            <option value="">Seleccione un centro...</option>
-                            <?php foreach ($centros as $c): ?>
-                                <option value="<?= $c['id_centro'] ?>"><?= $c['nombre'] ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-warning w-100">Registrar Usuario</button>
-                </form>
-            </div>
+            <section class="col-8 pl-2">
+                <?php require('usuarios.php'); ?>
+            </section>
         </div>
-    </div>
+    </main>
 
 </body>
 </html>

@@ -43,24 +43,28 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../index.php">
                         <i class="fa-solid fa-house"></i>
+                        Home
                     </a>
                 </li>
                 <!-- Crear Centro -->
                 <li class="nav-item">
                     <a class="nav-link" href="../centros_trabajo/crear_centro.php">
                         <i class="fa-solid fa-warehouse"></i>
+                        Crear Centro
                     </a>
                 </li>
                 <!-- Crear Elemento de Inventario -->
                 <li class="nav-item">
                     <a class="nav-link" href="../inventario_principal/crear_elemento.php">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
+                        Crear Elemento
                     </a>
                 </li>
                 <!-- Crear Usuario -->
                 <li class="nav-item">
                     <a class="nav-link" href="../usuarios/crear_usuario.php">
                         <i class="fa-solid fa-users"></i>
+                        Crear Usuario
                     </a>
                 </li>
             </ul>
@@ -68,48 +72,59 @@
         </div>
     </nav>
 
-    <!-- Formulario -->
-    <div class="container mt-5">
-        <div class="card shadow-sm">
-            <div class="card-header bg-danger text-white">
-                <h4 class="mb-0">Registrar Nueva Centro</h4>
-            </div>
-            <div class="card-body">
-                <form method="post">
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre del Centro</label>
-                        <input type="text" name="nombre" id="nombre" class="form-control" required>
+    <!-- Main -->
+    <main class="mt-3">
+        <div class="row m-5">
+            <!-- Formulario -->
+            <section class="col-4 p-0">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-danger text-white">
+                        <h4 class="mb-0">Registrar Nueva Centro</h4>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="ubicacion" class="form-label">Ubicación</label>
-                        <input type="text" name="ubicacion" id="ubicacion" class="form-control" required>
+                    <div class="card-body">
+                        <!-- Form -->
+                        <form method="post">
+                            <!-- Nombre del Centro -->
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre del Centro</label>
+                                <input type="text" name="nombre" id="nombre" class="form-control" required>
+                            </div>
+                            <!-- Ubicación -->
+                            <div class="mb-3">
+                                <label for="ubicacion" class="form-label">Ubicación</label>
+                                <input type="text" name="ubicacion" id="ubicacion" class="form-control" required>
+                            </div>
+                            <!-- Responsable -->
+                            <div class="mb-3">
+                                <label for="id_responsable" class="form-label">Responsable</label>
+                                <select name="id_responsable" id="id_responsable" class="form-select" required>
+                                    <option value="">Seleccione un usuario...</option>
+                                    <?php foreach ($usuarios as $u): ?>
+                                        <option value="<?= $u['id_usuario'] ?>"><?= $u['nombre'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <!-- Presupuesto Mensual -->
+                            <div class="mb-3">
+                                <label for="presupuesto" class="form-label">Presupuesto Mensual</label>
+                                <input type="number" name="presupuesto" id="presupuesto" class="form-control" step="1000" required>
+                            </div>
+                            <!-- Cantidad de Personal -->
+                            <div class="mb-3">
+                                <label for="personal" class="form-label">Cantidad de Personal</label>
+                                <input type="number" name="personal" id="personal" class="form-control" required>
+                            </div>
+                            <!-- Registrar Centro -->
+                            <button type="submit" class="btn btn-danger w-100">Registrar Centro</button>
+                        </form>
                     </div>
+                </div>
+            </section>
 
-                    <div class="mb-3">
-                        <label for="id_responsable" class="form-label">Responsable</label>
-                        <select name="id_responsable" id="id_responsable" class="form-select" required>
-                            <option value="">Seleccione un usuario...</option>
-                            <?php foreach ($usuarios as $u): ?>
-                                <option value="<?= $u['id_usuario'] ?>"><?= $u['nombre'] ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="presupuesto" class="form-label">Presupuesto Mensual</label>
-                        <input type="number" name="presupuesto" id="presupuesto" class="form-control" step="1000" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="personal" class="form-label">Cantidad de Personal</label>
-                        <input type="number" name="personal" id="personal" class="form-control" required>
-                    </div>
-
-                    <button type="submit" class="btn btn-danger w-100">Registrar Sede</button>
-                </form>
-            </div>
+            <section class="col-8 pl-2">
+                <?php require('centros.php'); ?>
+            </section>
         </div>
-    </div>
+    </main>
 </body>
 </html>

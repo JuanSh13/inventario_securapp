@@ -21,14 +21,14 @@
     // print_r($centros);
 ?>
 
-<div class="mt-5">
-    <div class="card shadow-sm">
+<section>
+    <article class="card shadow-sm">
         <div class="card-header bg-danger text-white">
             <h4 class="mb-0">Centros de Trabajo Registrados</h4>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped table-hover align-middle">
+                <table class="table table-striped table-hover">
                     <thead class="table-danger">
                         <tr>
                             <th>ID</th>
@@ -67,7 +67,7 @@
                 </table>
             </div>
         </div>
-    </div>
-</div>
+    </article>
+</section>
 
 

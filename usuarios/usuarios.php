@@ -20,8 +20,8 @@
     $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="mt-5">
-    <div class="card shadow-sm">
+<section>
+    <article class="card shadow-sm">
         <div class="card-header bg-warning text-white">
             <h4 class="mb-0">Lista de Usuarios por Centro de Trabajo</h4>
         </div>
@@ -65,6 +65,6 @@
                 </table>
             </div>
         </div>
-    </div>
-</div>
+    </article>
+</section>
 

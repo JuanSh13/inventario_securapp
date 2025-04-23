@@ -50,24 +50,28 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../index.php">
                         <i class="fa-solid fa-house"></i>
+                        Home
                     </a>
                 </li>
                 <!-- Crear Centro -->
                 <li class="nav-item">
                     <a class="nav-link" href="../centros_trabajo/crear_centro.php">
                         <i class="fa-solid fa-warehouse"></i>
+                        Crear Centro
                     </a>
                 </li>
                 <!-- Crear Elemento de Inventario -->
                 <li class="nav-item">
                     <a class="nav-link" href="../inventario_principal/crear_elemento.php">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
+                        Crear Elemento
                     </a>
                 </li>
                 <!-- Crear Usuario -->
                 <li class="nav-item">
                     <a class="nav-link" href="../usuarios/crear_usuario.php">
                         <i class="fa-solid fa-users"></i>
+                        Crear Usuario
                     </a>
                 </li>
             </ul>
@@ -75,89 +79,98 @@
         </div>
     </nav>
 
-    <!-- Formulario de creación -->
-    <div class="container mt-5">
-        <div class="card shadow-sm">
-            <div class="card-header bg-info text-white">
-                <h4 class="mb-0">Registrar Nuevo Elemento de Inventario</h4>
-            </div>
-            <div class="card-body">
-                <form method="post">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Código</label>
-                            <input type="text" name="codigo" class="form-control" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">Nombre</label>
-                            <input type="text" name="nombre" class="form-control" required>
-                        </div>
+    <main class="mt-3">
+        <div class="row m-5">
+            <!-- Formulario de creación -->
+            <section class="col-4 p-0">
+                <article class="card shadow-sm">
+                    <div class="card-header bg-info text-white">
+                        <h4 class="mb-0">Registrar Nuevo Elemento de Inventario</h4>
                     </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Descripción</label>
-                        <textarea name="descripcion" class="form-control" rows="2" required></textarea>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Categoría</label>
-                            <input type="text" name="categoria" class="form-control" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Marca</label>
-                            <input type="text" name="marca" class="form-control" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Modelo</label>
-                            <input type="text" name="modelo" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Fecha de Compra</label>
-                            <input type="date" name="fecha_compra" class="form-control" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Valor ($)</label>
-                            <input type="number" name="valor" step="100" class="form-control" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Estado</label>
-                            <select name="estado" class="form-select" required>
-                                <option value="Nuevo">Nuevo</option>
-                                <option value="Bueno">Bueno</option>
-                                <option value="Usado">Usado</option>
-                                <option value="Dañado">Dañado</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Vida útil (meses)</label>
-                            <input type="number" name="vida_util" class="form-control">
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="form-check mt-4 pt-2">
-                                <input class="form-check-input" type="checkbox" name="consumible" id="consumible">
-                                <label class="form-check-label" for="consumible">
-                                    Es consumible
-                                </label>
+                    <div class="card-body">
+                        <!-- Form -->
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Código</label>
+                                    <input type="text" name="codigo" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Nombre</label>
+                                    <input type="text" name="nombre" class="form-control" required>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">Stock mínimo</label>
-                            <input type="number" name="stock_minimo" class="form-control" placeholder="Opcional">
-                        </div>
+    
+                            <div class="mb-3">
+                                <label class="form-label">Descripción</label>
+                                <textarea name="descripcion" class="form-control" rows="2" required></textarea>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Categoría</label>
+                                    <input type="text" name="categoria" class="form-control" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Marca</label>
+                                    <input type="text" name="marca" class="form-control" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Modelo</label>
+                                    <input type="text" name="modelo" class="form-control">
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Fecha de Compra</label>
+                                    <input type="date" name="fecha_compra" class="form-control" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Valor ($)</label>
+                                    <input type="number" name="valor" step="100" class="form-control" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Estado</label>
+                                    <select name="estado" class="form-select" required>
+                                        <option value="Nuevo">Nuevo</option>
+                                        <option value="Bueno">Bueno</option>
+                                        <option value="Usado">Usado</option>
+                                        <option value="Dañado">Dañado</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Vida útil (meses)</label>
+                                    <input type="number" name="vida_util" class="form-control">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-check mt-4 pt-2">
+                                        <input class="form-check-input" type="checkbox" name="consumible" id="consumible">
+                                        <label class="form-check-label" for="consumible">
+                                            Es consumible
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Stock mínimo</label>
+                                    <input type="number" name="stock_minimo" class="form-control" placeholder="Opcional">
+                                </div>
+                            </div>
+    
+                            <button type="submit" class="btn btn-info w-100">Registrar Elemento</button>
+                        </form>
                     </div>
+                </article>
+            </section>
 
-                    <button type="submit" class="btn btn-info w-100">Registrar Elemento</button>
-                </form>
-            </div>
+            <section class="col-8 pl-2">
+                <?php require('inventario.php'); ?>
+            </section>
         </div>
-    </div>
+    </main>
 
 </body>
 </html>

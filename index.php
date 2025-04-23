@@ -19,24 +19,32 @@
     <nav class="navbar navbar-expand-lg shadow-sm">
         <div class="container-fluid mx-5">
             <ul class="navbar-nav">
+                <!-- Home -->
                 <li class="nav-item">
                     <a class="nav-link" href="index.php">
-                        <i class="fa-solid fa-house"></i>
+                        <i class="fa-solid fa-house"></i> 
+                        Home
                     </a>
                 </li>
+                <!-- Crear Centro -->
                 <li class="nav-item">
                     <a class="nav-link" href="centros_trabajo/crear_centro.php">
                         <i class="fa-solid fa-warehouse"></i>
+                        Crear Centro
                     </a>
                 </li>
+                <!-- Crear Elemento de Inventario -->
                 <li class="nav-item">
                     <a class="nav-link" href="inventario_principal/crear_elemento.php">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
+                        Crear Elemento
                     </a>
                 </li>
+                <!-- Crear Usuario -->
                 <li class="nav-item">
                     <a class="nav-link" href="usuarios/crear_usuario.php">
                         <i class="fa-solid fa-users"></i>
+                        Crear Usuario
                     </a>
                 </li>
             </ul>
