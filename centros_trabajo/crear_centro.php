@@ -79,7 +79,10 @@
             <section class="col-4 p-0">
                 <div class="card shadow-sm">
                     <div class="card-header bg-danger text-white">
-                        <h4 class="mb-0">Registrar Nueva Centro</h4>
+                        <h4 class="mb-0">
+                            <i class="fa-solid fa-warehouse me-2"></i>
+                            Registrar Nueva Centro
+                        </h4>
                     </div>
                     <div class="card-body">
                         <!-- Form -->

@@ -54,23 +54,6 @@
 
     <!-- Main -->
     <main>
-        <!-- Enlista las sedes - empresas -->
-        <section class="m-5">
-            <!-- Require - Centros -->
-            <?php require('centros_trabajo/centros.php'); ?>
-        </section>
-        
-        <!-- Enlista el inventario -->
-        <section class="m-5">
-            <!-- Require - Inventario -->
-            <?php require('inventario_principal/inventario.php'); ?>
-        </section>
-
-        <!-- Enlista los usuarios  -->
-        <section class="m-5">
-            <!-- Require - Usuarios -->
-            <?php require('usuarios/usuarios.php'); ?>
-        </section>
     </main>
 
 

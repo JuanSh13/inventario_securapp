@@ -83,7 +83,10 @@
             <section class="col-4 p-0">
                 <article class="card shadow-sm">
                     <div class="card-header bg-warning text-white">
-                        <h4 class="mb-0">Registrar Nuevo Usuario</h4>
+                        <h4 class="mb-0">
+                            <i class="fa-solid fa-users me-2"></i>
+                            Registrar Nuevo Usuario
+                        </h4>
                     </div>
                     <div class="card-body">
                         <form method="post">
