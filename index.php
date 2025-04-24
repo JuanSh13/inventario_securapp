@@ -54,6 +54,10 @@
 
     <!-- Main -->
     <main>
+        <section>
+            <?php require('cargar_excel/carga_excel.php'); ?>
+            <?php require('cargar_excel/imprimir_excel.php'); ?>
+        </section>
     </main>
 
 
