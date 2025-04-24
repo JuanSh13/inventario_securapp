@@ -19,8 +19,6 @@
 
     $stmt = $pdo->query($sql);
     $inventario = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // print_r($inventario[0]);
 ?>
 
 <section>

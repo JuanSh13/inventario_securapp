@@ -31,8 +31,6 @@
                     $stmt->execute([
                         $nombre, $correo, $telefono
                     ]);
-                    // foreach($datos as $llave => $valor) {
-                    // }
                 }
                 fclose($handle);
                 header("Location: ../index.php");

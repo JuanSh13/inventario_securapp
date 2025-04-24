@@ -2,16 +2,7 @@
     // require('../db/conexion.php');
 
     // Consulta de tabla de contactos
-    $sql = "
-        SELECT 
-            id,
-            nombre,
-            correo,
-            telefono
-        FROM contactos
-    ";
-
-    $stmt = $pdo->query($sql);
+    $stmt = $pdo->query("SELECT * FROM contactos");
     $contactos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // print_r($inventario[0]);
