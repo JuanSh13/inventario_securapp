@@ -55,7 +55,7 @@
                 </li>
                 <!-- Crear Elemento de Inventario -->
                 <li class="nav-item">
-                    <a class="nav-link" href="../inventario_principal/crear_elemento.php">
+                    <a class="nav-link" href="../inventario_principal/index.php">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
                         Crear Elemento
                     </a>

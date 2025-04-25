@@ -1,64 +1,67 @@
 <?php
-    // require('../db/conexion.php');
+    require('../db/conexion.php');
 
-    // Consulta de inventario
+    // ini_set('display_errors', 1);
+    // ini_set('display_startup_errors', 1);
+    // error_reporting(E_ALL);
+
+    // Consulta de tabla
     $sql = "
         SELECT 
-            c.nombre AS centro, 
-            e.nombre AS elemento, 
-            e.id_elemento,
-            i.id_inventario,
-            i.cantidad, 
-            i.estado_actual, 
-            e.codigo, 
-            e.categoria
+            i.id,
+            i.codigo_inventario,
+            i.fecha_salida,
+            i.fecha_devolucion,
+            i.fecha_creacion,
+            i.estado,
+            e.id AS id_elemento,
+            e.nombre AS nombre_elemento,
+            c.id AS id_centro,
+            c.nombre AS nombre_centro
         FROM inventario i
-        JOIN centro_trabajo c ON i.id_centro = c.id_centro
-        JOIN elemento e ON i.id_elemento = e.id_elemento
+        JOIN elementos e ON i.id_elemento = e.id
+        JOIN centro_trabajo c ON i.id_centro = c.id
     ";
 
+
+    // $sql = "SELECT * FROM inventario";
     $stmt = $pdo->query($sql);
     $inventario = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<section>
-    <article class="card shadow-sm">
-        <div class="card-header bg-info text-white">
-            <h4 class="mb-0">Inventario de Herramientas y Equipos</h4>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-striped table-hover align-middle">
-                    <thead class="table-info">
-                        <tr>
-                            <th>Código</th>
-                            <th>Elemento</th>
-                            <th>Categoría</th>
-                            <th>Centro de Trabajo</th>
-                            <th>Cantidad</th>
-                            <th>Estado</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($inventario as $i): ?>
-                        <tr>
-                            <td><?= $i['codigo'] ?></td>
-                            <td><?= $i['elemento'] ?></td>
-                            <td><?= $i['categoria'] ?></td>
-                            <td><?= $i['centro'] ?></td>
-                            <td class="text-center"><?= $i['cantidad'] ?></td>
-                            <td><?= $i['estado_actual'] ?></td>
-                            <td>
-                                <a class="text-danger" href="inventario_principal/borrar_elemento.php?id_elemento=<?= $i['id_elemento']; ?>&id_inventario=<?= $i['id_inventario']; ?>">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </article>
+<section class="table-responsive">
+    <table class="table table-striped table-hover align-middle m-0">
+        <thead class="table-secondary">
+            <tr>
+                <th>ID</th>
+                <th>Código</th>
+                <th>Nombre del Elemento</th>
+                <th>Nombre del Centro</th>
+                <th>Fecha de Salida</th>
+                <th>Fecha de Devolución</th>
+                <th>Estado</th>
+                <th>Fecha de Creación</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($inventario as $i): ?>
+                <tr>
+                    <td><?= $i['id'] ?></td>
+                    <td><?= $i['codigo_inventario'] ?></td>
+                    <td><?= $i['nombre_elemento'] ?></td>
+                    <td><?= $i['nombre_centro'] ?></td>
+                    <td><?= $i['fecha_salida'] ?></td>
+                    <td><?= $i['fecha_devolucion'] ?></td>
+                    <td><?= $i['estado'] ?></td>
+                    <td><?= $i['fecha_creacion'] ?></td>
+                    <td>
+                        <!-- <a class="text-danger" href="inventario_principal/borrar_elemento.php?id_elemento=<?= $i['id_elemento']; ?>&id_inventario=<?= $i['id_inventario']; ?>">
+                            <i class="fa-solid fa-xmark"></i>
+                        </a> -->
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </section>

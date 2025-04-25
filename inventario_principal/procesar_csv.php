@@ -48,7 +48,7 @@
                     ]);
                 }
                 fclose($handle);
-                header("Location: crear_elemento.php");
+                header("Location: index.php");
                 exit();              
 
             } else {

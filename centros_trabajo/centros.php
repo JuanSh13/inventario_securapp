@@ -4,7 +4,7 @@
 
     $sql = "
         SELECT 
-            c.id_centro,
+            c.id,
             c.nombre,
             c.ubicacion,
             CONCAT(u.nombres, ' ', u.apellidos) AS responsable,
@@ -45,7 +45,7 @@
                     <tbody>
                         <?php foreach ($centros as $c): ?>
                         <tr>
-                            <td><?= $c['id_centro'] ?></td>
+                            <td><?= $c['id'] ?></td>
                             <td><?= $c['nombre'] ?></td>
                             <td><?= $c['ubicacion'] ?></td>
                             <td><?= $c['responsable'] ?? '<em>Sin asignar</em>' ?></td>

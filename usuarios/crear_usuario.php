@@ -22,7 +22,7 @@
     }
 
     // Obtener los centros disponibles
-    $centros = $pdo->query("SELECT id_centro, nombre FROM centro_trabajo")->fetchAll();
+    $centros = $pdo->query("SELECT id, nombre FROM centro_trabajo")->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +59,7 @@
                 </li>
                 <!-- Crear Elemento de Inventario -->
                 <li class="nav-item">
-                    <a class="nav-link" href="../inventario_principal/crear_elemento.php">
+                    <a class="nav-link" href="../inventario_principal/index.php">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
                         Crear Elemento
                     </a>
