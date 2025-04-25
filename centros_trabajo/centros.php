@@ -55,7 +55,7 @@
                             <td><?= $c['cantidad_personal'] ?></td>
                             <td>
                                 <div data-bs-toggle="modal" data-bs-target="#myModal" >
-                                    <a href="centros_trabajo/borrar_centro.php?id=<?= $c['id_centro'] ?>" class="text-danger">
+                                    <a href="centros_trabajo/borrar_centro.php?id=<?= $c['id'] ?>" class="text-danger">
                                         <i class="fa-solid fa-xmark"></i>
                                     </a>
                                 </div>

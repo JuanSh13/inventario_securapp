@@ -27,8 +27,7 @@
                 <th>Valor</th>
                 <th>Disponibilidad</th>
                 <!-- <th>Centro de Trabajo</th> -->
-                <th>Fecha de Compra</th>
-                <th>Fecha de Vencimiento</th>
+                <th>Fecha de Compra y Vencimiento</th>
                 <th>Stock</th>
                 <th></th>
                 <th></th>
@@ -49,8 +48,7 @@
                     <td><?= $e['estado'] ?></td>
                     <td><?= $e['valor'] ?></td>
                     <td><?= $e['disponibilidad'] ?></td>
-                    <td><?= $e['fecha_compra'] ?></td>
-                    <td><?= $e['fecha_vencimiento'] ?></td>
+                    <td><?= $e['fecha_compra'] ?> | <?= $e['fecha_vencimiento'] ?></td>
                     <td><?= $e['stock'] ?></td>
                     <td class="">
                         <a class="text-secondary" href="?id_elemento=<?= $e['id'] ?>">

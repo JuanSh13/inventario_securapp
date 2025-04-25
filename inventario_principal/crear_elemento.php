@@ -33,6 +33,7 @@
         // Insertar en inventario
         $codigo_inventario = generarCodigo(5); // Función para generar código aleatorio
         $fecha_creacion = date("Y-m-d h:i:sa");
+        
         $fecha_devolucion = null; // Puedes ajustarlo si necesitas una fecha estimada
 
         // Consulta SQL
