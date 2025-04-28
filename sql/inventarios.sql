@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-04-2025 a las 16:42:16
+-- Tiempo de generación: 28-04-2025 a las 15:56:17
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -47,11 +47,11 @@ CREATE TABLE `acta` (
 --
 -- Estructura de tabla para la tabla `centro_trabajo`
 --
--- Creación: 22-04-2025 a las 16:27:00
+-- Creación: 25-04-2025 a las 12:49:23
 --
 
 CREATE TABLE `centro_trabajo` (
-  `id_centro` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nombre` varchar(100) DEFAULT NULL,
   `ubicacion` varchar(255) DEFAULT NULL,
   `presupuesto_mensual` decimal(10,2) DEFAULT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE `centro_trabajo` (
 -- Volcado de datos para la tabla `centro_trabajo`
 --
 
-INSERT INTO `centro_trabajo` (`id_centro`, `nombre`, `ubicacion`, `presupuesto_mensual`, `cantidad_personal`, `id_responsable`) VALUES
+INSERT INTO `centro_trabajo` (`id`, `nombre`, `ubicacion`, `presupuesto_mensual`, `cantidad_personal`, `id_responsable`) VALUES
 (10, 'Sede Norte', 'Av. 68 # 70-90, Bogotá', 900000.00, 12, 1),
 (11, 'Sede Sur', 'Cra. 50 # 10-45, Bogotá', 750000.00, 10, 2),
 (12, 'Sede Medellín', 'Cl. 30 # 45-67, Medellín', 820000.00, 15, 3),
@@ -76,7 +76,6 @@ INSERT INTO `centro_trabajo` (`id_centro`, `nombre`, `ubicacion`, `presupuesto_m
 -- Estructura de tabla para la tabla `contactos`
 --
 -- Creación: 24-04-2025 a las 12:44:48
--- Última actualización: 24-04-2025 a las 14:41:55
 --
 
 CREATE TABLE `contactos` (
@@ -86,64 +85,31 @@ CREATE TABLE `contactos` (
   `telefono` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `contactos`
---
-
-INSERT INTO `contactos` (`id`, `nombre`, `correo`, `telefono`) VALUES
-(28045, '﻿nombre', 'correo', 'telefono'),
-(28046, 'Juan Pérez', 'juan@email.com', '3001234567'),
-(28047, 'Laura Gómez', 'laura@email.com', '3109876543'),
-(28048, 'Carlos Ruiz', 'carlos@email.com', '3204567890'),
-(28049, '﻿nombre', 'correo', 'telefono'),
-(28050, 'Juan Pérez', 'juan@email.com', '3001234567'),
-(28051, 'Laura Gómez', 'laura@email.com', '3109876543'),
-(28052, 'Carlos Ruiz', 'carlos@email.com', '3204567890'),
-(28053, '﻿nombre', 'correo', 'telefono'),
-(28054, 'Juan Pérez', 'juan@email.com', '3001234567'),
-(28055, 'Laura Gómez', 'laura@email.com', '3109876543'),
-(28056, 'Carlos Ruiz', 'carlos@email.com', '3204567890'),
-(28057, '﻿nombre', 'correo', 'telefono'),
-(28058, 'Juan Pérez', 'juan@email.com', '3001234567'),
-(28059, 'Laura Gómez', 'laura@email.com', '3109876543'),
-(28060, 'Carlos Ruiz', 'carlos@email.com', '3204567890');
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `elemento`
+-- Estructura de tabla para la tabla `elementos`
 --
--- Creación: 22-04-2025 a las 13:12:13
+-- Creación: 25-04-2025 a las 19:17:58
 --
 
-CREATE TABLE `elemento` (
-  `id_elemento` int(11) NOT NULL,
-  `codigo` varchar(50) DEFAULT NULL,
-  `nombre` varchar(100) DEFAULT NULL,
+CREATE TABLE `elementos` (
+  `id` int(11) NOT NULL,
+  `codigo` varchar(50) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
   `descripcion` text DEFAULT NULL,
-  `categoria` varchar(100) DEFAULT NULL,
+  `categoria` enum('herramienta','equipo','insumo') NOT NULL,
   `marca` varchar(100) DEFAULT NULL,
   `modelo` varchar(100) DEFAULT NULL,
   `fecha_compra` date DEFAULT NULL,
-  `valor` decimal(12,2) DEFAULT NULL,
-  `estado` varchar(50) DEFAULT NULL,
-  `vida_util` int(11) DEFAULT NULL,
-  `consumible` tinyint(1) DEFAULT NULL,
-  `stock_minimo` int(11) DEFAULT NULL
+  `valor` decimal(10,2) DEFAULT NULL,
+  `disponibilidad` enum('Vendido','Prestado','En bodega') NOT NULL,
+  `estado` enum('Nuevo','Bueno','Usado','Dañado') NOT NULL,
+  `talla` varchar(50) DEFAULT NULL,
+  `color` varchar(50) DEFAULT NULL,
+  `fecha_vencimiento` date DEFAULT NULL,
+  `stock` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `elemento`
---
-
-INSERT INTO `elemento` (`id_elemento`, `codigo`, `nombre`, `descripcion`, `categoria`, `marca`, `modelo`, `fecha_compra`, `valor`, `estado`, `vida_util`, `consumible`, `stock_minimo`) VALUES
-(2, 'HERR-001', 'Martillo', 'Martillo de acero con mango de goma', 'Herramienta manual', 'Stanley', 'ST123', '2024-01-15', 45000.00, 'Bueno', 24, 0, NULL),
-(3, 'HERR-002', 'Taladro', 'Taladro eléctrico 600W', 'Herramienta eléctrica', 'Bosch', 'BO600', '2024-02-10', 250000.00, 'Excelente', 36, 0, NULL),
-(4, 'HERR-003', 'Destornillador', 'Juego de destornilladores de precisión', 'Herramienta manual', 'Truper', 'TRP001', '2023-11-05', 30000.00, 'Usado', 18, 0, NULL),
-(5, 'CON-001', 'Guantes de Nitrilo', 'Guantes desechables para protección química', 'Seguridad', '3M', 'GN100', '2025-01-01', 800.00, 'Nuevo', 0, 1, 200),
-(6, 'CON-002', 'Cinta Aislante', 'Cinta eléctrica negra 10m', 'Electricidad', '3M', 'CA10', '2025-01-02', 1200.00, 'Nuevo', 0, 1, 50),
-(7, 'CON-003', 'Tornillos 1/4\"', 'Caja de 100 unidades', 'Ferretería', 'Genérico', 'TOR14', '2025-01-03', 5000.00, 'Nuevo', 0, 1, 30),
-(8, '300-330', 'Pico', 'Pico de acero con doble punta ', 'Herramienta manual', 'Minecraft', 'PT-MC201', '2025-04-17', 135000.00, 'Nuevo', 8, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -187,29 +153,19 @@ CREATE TABLE `fotografia` (
 --
 -- Estructura de tabla para la tabla `inventario`
 --
--- Creación: 22-04-2025 a las 13:13:06
+-- Creación: 25-04-2025 a las 13:31:49
 --
 
 CREATE TABLE `inventario` (
-  `id_inventario` int(11) NOT NULL,
-  `id_centro` int(11) DEFAULT NULL,
-  `id_elemento` int(11) DEFAULT NULL,
-  `cantidad` int(11) DEFAULT NULL,
-  `ubicacion_fisica` varchar(255) DEFAULT NULL,
-  `estado_actual` varchar(100) DEFAULT NULL,
-  `ultima_revision` date DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `codigo_inventario` varchar(50) NOT NULL,
+  `id_elemento` int(11) NOT NULL,
+  `id_centro` int(11) NOT NULL,
+  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
+  `fecha_salida` date DEFAULT NULL,
+  `fecha_devolucion` date DEFAULT NULL,
+  `estado` enum('vendido','sin entregar','devuelto') DEFAULT 'sin entregar'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `inventario`
---
-
-INSERT INTO `inventario` (`id_inventario`, `id_centro`, `id_elemento`, `cantidad`, `ubicacion_fisica`, `estado_actual`, `ultima_revision`) VALUES
-(14, 11, 2, 2, 'Gabinete Herramientas', 'Excelente', '2025-04-01'),
-(15, 12, 4, 150, 'Cajón 3', 'Disponible', '2025-04-01'),
-(16, 14, 5, 60, 'Cajón 4', 'Disponible', '2025-04-01'),
-(17, 13, 3, 3, 'Caja de herramientas', 'Usado', '2025-04-01'),
-(18, 13, 6, 45, 'Cajón 5', 'Disponible', '2025-04-01');
 
 -- --------------------------------------------------------
 
@@ -278,7 +234,7 @@ ALTER TABLE `acta`
 -- Indices de la tabla `centro_trabajo`
 --
 ALTER TABLE `centro_trabajo`
-  ADD PRIMARY KEY (`id_centro`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_responsable` (`id_responsable`);
 
 --
@@ -288,11 +244,10 @@ ALTER TABLE `contactos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `elemento`
+-- Indices de la tabla `elementos`
 --
-ALTER TABLE `elemento`
-  ADD PRIMARY KEY (`id_elemento`),
-  ADD UNIQUE KEY `codigo` (`codigo`);
+ALTER TABLE `elementos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `entrada_inventario`
@@ -310,9 +265,10 @@ ALTER TABLE `fotografia`
 -- Indices de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  ADD PRIMARY KEY (`id_inventario`),
-  ADD KEY `id_centro` (`id_centro`),
-  ADD KEY `id_elemento` (`id_elemento`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `codigo_inventario` (`codigo_inventario`),
+  ADD KEY `fk_inventario_elemento` (`id_elemento`),
+  ADD KEY `fk_inventario_centro` (`id_centro`);
 
 --
 -- Indices de la tabla `movimiento`
@@ -343,19 +299,19 @@ ALTER TABLE `acta`
 -- AUTO_INCREMENT de la tabla `centro_trabajo`
 --
 ALTER TABLE `centro_trabajo`
-  MODIFY `id_centro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280;
 
 --
 -- AUTO_INCREMENT de la tabla `contactos`
 --
 ALTER TABLE `contactos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28061;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30081;
 
 --
--- AUTO_INCREMENT de la tabla `elemento`
+-- AUTO_INCREMENT de la tabla `elementos`
 --
-ALTER TABLE `elemento`
-  MODIFY `id_elemento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `elementos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `entrada_inventario`
@@ -373,7 +329,7 @@ ALTER TABLE `fotografia`
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT de la tabla `movimiento`
@@ -401,8 +357,8 @@ ALTER TABLE `centro_trabajo`
 -- Filtros para la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  ADD CONSTRAINT `inventario_ibfk_1` FOREIGN KEY (`id_centro`) REFERENCES `centro_trabajo` (`id_centro`),
-  ADD CONSTRAINT `inventario_ibfk_2` FOREIGN KEY (`id_elemento`) REFERENCES `elemento` (`id_elemento`);
+  ADD CONSTRAINT `fk_inventario_centro` FOREIGN KEY (`id_centro`) REFERENCES `centro_trabajo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_inventario_elemento` FOREIGN KEY (`id_elemento`) REFERENCES `elementos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `movimiento`
@@ -414,7 +370,7 @@ ALTER TABLE `movimiento`
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_centro`) REFERENCES `centro_trabajo` (`id_centro`);
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_centro`) REFERENCES `centro_trabajo` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
